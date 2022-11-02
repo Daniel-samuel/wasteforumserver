@@ -1,16 +1,19 @@
 const messageResolvers = require("./message");
-const usersResolvers = require("./user");
 const hospitalResolvers = require("./hospital");
+const patientResolvers = require("./patient");
+const postResolvers = require("./post");
 
 module.exports = {
   Query: {
     ...messageResolvers.Query,
-    ...usersResolvers.Query,
     ...hospitalResolvers.Query,
+    ...patientResolvers.Query,
+    ...postResolvers.Query,
   },
   Mutation: {
     ...messageResolvers.Mutation,
-    ...usersResolvers.Mutation,
     ...hospitalResolvers.Mutation,
+    ...patientResolvers.Mutation,
+    ...postResolvers.Mutation,
   },
 };

@@ -1,5 +1,6 @@
 const Post = `
 type Post {
+    _id: ID
     body: String
     username: String
     createdAt: DateTime
@@ -11,6 +12,10 @@ input createPostInput {
     body: String
     username: String
 }
+input addCommentToPostInput {
+    postId: ID!
+    comment: String
+}
 
 type Query {
     listPost: [Post]
@@ -19,7 +24,8 @@ type Query {
 }
 type Mutation {
     createPost(input: createPostInput): Post!
-    deletePost(postId: ID!): String 
+    addCommentToPost(input: addCommentToPostInput): Post!
+    deletePost(id: ID!): String 
 }
 
 `;

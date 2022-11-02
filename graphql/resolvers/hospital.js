@@ -28,7 +28,8 @@ module.exports = {
       record = await User.Hospital.findById(id);
       return record;
     },
-    async listHospital(_, {}) {
+    async listHospital(_, {}, context) {
+      console.log(">>>", context);
       records = await User.Hospital.find();
       return records;
     },

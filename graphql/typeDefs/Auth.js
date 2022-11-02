@@ -8,7 +8,6 @@ const Auth = `
   type User {
     username: String
     email: String
-    password: String
     token: String
   }
 
@@ -17,7 +16,7 @@ const Auth = `
       HOSPITALADMIN
       DOCTOR
       AGENT
-      TURBOADMIN
+      TURBOMEDADMIN
   }
   input MessageInput {
     text: String
@@ -27,12 +26,12 @@ const Auth = `
     username: String
     email: String
     password: String
+    accountType: UserTypeEnum
   }
 
   input LoginInput {
-    email: String
-    password: String
-    userType: UserTypeEnum
+    email: String!
+    password: String!
   }
 
   type Query {
@@ -41,8 +40,8 @@ const Auth = `
   }
   type Mutation {
     createMessage(messageInput: MessageInput): Message!
-    registerUser(registerInput: RegisterInput): User
-    loginUser(loginInput: LoginInput): User
+    registerUser(input: RegisterInput): User
+    loginUser(input: LoginInput): User
   }
 `;
 

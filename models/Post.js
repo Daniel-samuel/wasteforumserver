@@ -4,18 +4,24 @@ const opts = {
   timestamps: true,
 };
 
+const commentSchema = new Schema(
+  {
+    body: String,
+    accountType: String,
+    userId: String,
+  },
+  opts
+);
+
 const postSchema = new Schema(
   {
     body: String,
     username: String,
     comments: [
-      {
-        body: String,
-        username: String,
-      },
+      commentSchema
     ],
     postedby: {
-      accountType: { type: String, emum: ["Agent", "Doctor"] },
+      accountType: { type: String, enum: ["AGENT", "HOSPITALADMIN", "DOCTOR", "PATIENT", "TURBOMEDADMIN"] },
       userId: String,
     },
   },

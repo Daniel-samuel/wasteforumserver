@@ -4,12 +4,11 @@ const opts = {
   timestamps: true,
 };
 
-const userSchema = new Schema(
+const authSchema = new Schema(
   {
-    username: { type: String, default: null },
-    email: { type: String, unique: true },
-    password: { type: String },
     token: { type: String },
+    userId: { type: String },
+    accountType: {type: String, enum:["AGENT", "HOSPITALADMIN", "DOCTOR", "PATIENT", "TURBOMEDADMIN"] }
   },
   opts
 );
@@ -39,7 +38,7 @@ const hospitalSchema = new Schema(
 
 const hospitalAdminSchema = new Schema(
   {
-    hospital: { type: Schema.Types.ObjectId, ref: "Hospital", required: true },
+    hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL", required: true },
     email: { type: String, unique: true },
     password: { type: String, unique: true },
   },
@@ -48,7 +47,7 @@ const hospitalAdminSchema = new Schema(
 
 const doctorSchema = new Schema(
   {
-    hospital: { type: Schema.Types.ObjectId, ref: "Doctor", required: true },
+    hospital: { type: Schema.Types.ObjectId, ref: "DOCTOR", required: true },
     email: { type: String, unique: true },
     password: { type: String, unique: true },
   },
@@ -68,8 +67,8 @@ const patientSchema = new Schema(
 const patientHospitalSchema = new Schema(
   {
     active: { type: Boolean, default: true }, //if patient still uses the hospital
-    hospital: { type: Schema.Types.ObjectId, ref: "Hospital" },
-    patient: { type: Schema.Types.ObjectId, ref: "Patient" },
+    hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL" },
+    patient: { type: Schema.Types.ObjectId, ref: "PATIENT" },
   },
   opts
 );
@@ -85,19 +84,20 @@ const agentSchema = new Schema(
   opts
 );
 
-const User = model("User", userSchema);
-const TurbomedAdmin = model("TurbomedAdmin", turbomedAdminSchema);
-const Agent = model("Agent", agentSchema);
+const Auth = model("AUTH", authSchema);
 
-const Hospital = model("Hospital", hospitalSchema);
-const HospitalAdmin = model("HospitalAdmin", hospitalAdminSchema);
-const Doctor = model("Doctor", doctorSchema);
+const TurbomedAdmin = model("TURBOMEDADMIN", turbomedAdminSchema);
+const Agent = model("AGENT", agentSchema);
 
-const Patient = model("Patient", patientSchema);
-const PatientHospital = model("PatientHospital", patientHospitalSchema);
+const Hospital = model("HOSPITAL", hospitalSchema);
+const HospitalAdmin = model("HOSPITALADMIN", hospitalAdminSchema);
+const Doctor = model("DOCTOR", doctorSchema);
+
+const Patient = model("PATIENT", patientSchema);
+const PatientHospital = model("PATIENTHOSPITAL", patientHospitalSchema);
 
 const exportVariables = {
-  User,
+  Auth,
   TurbomedAdmin,
   Agent,
   Hospital,
