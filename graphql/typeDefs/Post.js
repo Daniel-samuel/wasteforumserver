@@ -2,6 +2,7 @@ const Post = `
 type Post {
     _id: ID
     body: String
+    comments: JSON
     username: String
     createdAt: DateTime
     updatedAt: DateTime
