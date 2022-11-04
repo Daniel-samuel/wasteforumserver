@@ -19,9 +19,9 @@ module.exports = {
       return post;
     },
 
-    addCommentToPost: async (_, { id, input }, context) => {
+    addCommentToPost: async (_, {input }, context) => {
       const user = await authenticate(context);
-      const post = await Post.findById(id);
+      const post = await Post.findById(input.postId);
       if (post) {
         post.comments.unshift({
           ...input,
