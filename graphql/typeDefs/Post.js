@@ -15,7 +15,7 @@ input createPostInput {
 }
 input addCommentToPostInput {
     postId: ID!
-    comment: String
+    body: String
 }
 
 type Query {

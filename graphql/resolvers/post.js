@@ -1,5 +1,5 @@
 const Post = require("../../models/Post");
-const authenticate = require("../../helpers/authenticate");// For the user to be able to create a post, they must be logged in. We can use the authenticate function to get the user from the context.
+const authenticate = require("../../helpers/authenticate"); // For the user to be able to create a post, they must be logged in. We can use the authenticate function to get the user from the context.
 
 module.exports = {
   Mutation: {
@@ -9,7 +9,7 @@ module.exports = {
 
       const newPost = new Post({
         ...input,
-        comments: [],
+        // comments: [],
         postedBy: {
           accountType: user.accountType,
           userId: user.userId,
@@ -19,8 +19,9 @@ module.exports = {
       return post;
     },
 
-    addCommentToPost: async (_, {input }, context) => {
+    addCommentToPost: async (_, { input }, context) => {
       const user = await authenticate(context);
+
       const post = await Post.findById(input.postId);
       if (post) {
         post.comments.unshift({
@@ -31,7 +32,7 @@ module.exports = {
         await post.save();
         return post;
       } else throw new Error("Post not found");
-    }
+    },
   },
 
   Query: {
