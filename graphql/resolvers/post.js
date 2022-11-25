@@ -9,7 +9,7 @@ module.exports = {
 
       const newPost = new Post({
         ...input,
-        // comments: [],
+        comments: [],
         postedBy: {
           accountType: user.accountType,
           userId: user.userId,

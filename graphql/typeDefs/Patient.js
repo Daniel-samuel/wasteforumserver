@@ -19,7 +19,6 @@ const Patient = `
     name: String
     email: String!
     password: String!
-
     address: String
     state: String
     country: String
@@ -38,4 +37,3 @@ const Patient = `
 `;
 // LoginInput is defined in Auth.js; so we don't need to define it again here.
 module.exports = Patient;
-

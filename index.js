@@ -19,6 +19,7 @@ const startServer = async () => {
     const server = new ApolloServer({
       typeDefs,
       resolvers,
+      introspection: true,
 
       context: (req) => {
         return { ...req };
@@ -26,23 +27,20 @@ const startServer = async () => {
     });
     await server.start();
 
-    mongoose
-      .connect(MONGODB, { useNewUrlParser: true })
-      .then(() => {
-        // console.log("MongoDB connected");
-        // return server.listen({ port: 8080 });
+    mongoose.connect(MONGODB, { useNewUrlParser: true }).then(() => {
+      // console.log("MongoDB connected");
+      // return server.listen({ port: 8080 });
 
-        server.applyMiddleware({ app });
-        app.listen(process.env.PORT || 8080, () =>
-          console.log(
-            `🚀 Server ready at http://localhost:8080${server.graphqlPath}`
-          )
-        );
-      })
-      // .then((res) => {
-      //   console.log(`Server is running on ${res.url}`);
-      // });
-    
+      server.applyMiddleware({ app });
+      app.listen(process.env.PORT || 8080, () =>
+        console.log(
+          `🚀 Server ready at http://localhost:8080${server.graphqlPath}`
+        )
+      );
+    });
+    // .then((res) => {
+    //   console.log(`Server is running on ${res.url}`);
+    // });
   } catch (err) {
     throw err;
   }
