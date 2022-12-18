@@ -1,36 +1,85 @@
 const User = require("../../models/User");
+const Utils = require("../../helpers/utils")
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   Mutation: {
-    async createHospital(_, { input }) {
-      const newHospital = new User.Hospital({
+    async createHospitalRegistrationRequest(_, { input }) {
+      // Create a new HospitalRegistrationRequest object with the input data
+      const newHospitalRegistrationRequest = new User.HospitalRegistrationRequest({
         ...input,
-        // name: name,
       });
-      const hospitalResponse = await newHospital.save();
-      console.log(hospitalResponse);
 
-      const newHospitalAdmin = new User.HospitalAdmin({
-        email: input.email,
-        password: input.password,
-        hospital: hospitalResponse._id,
-      });
-      await newHospitalAdmin.save();
+      // Save the HospitalRegistrationRequest object to the database
+      const hospitalRegistrationRequestResponse = await newHospitalRegistrationRequest.save();
+      console.log(hospitalRegistrationRequestResponse);
 
+      // Send an email to the Turbomed admin
+      Utils.sendEmail({
+        to: "folarinded@gmail.com",
+        subject: "New Hospital Registration Request",
+        text: `Details: ${JSON.stringify(hospitalRegistrationRequestResponse)}`
+      })
+
+      // Return the ID and the rest of the data for the HospitalRegistrationRequest object
       return {
-        id: hospitalResponse._id,
-        ...hospitalResponse._doc,
+        id: hospitalRegistrationRequestResponse._id,
+        ...hospitalRegistrationRequestResponse._doc,
       };
     },
+
+    async hospitalAdminCreateDoctor(_, { input }) {
+
+      // Check that the hospital exists
+      const hospital = await User.Hospital.findById(input.hospital);
+      if (!hospital) {
+        throw new Error('Hospital not found.');
+      }
+      const password = Utils.generatePassword();
+
+      // Hash the password using bcrypt
+      const saltRounds = 10;
+      const hash = await bcrypt.hash(password, saltRounds);
+
+      
+      // Create the doctor
+      const doctor = new User.Doctor({
+        ...input,  password: hash
+      });
+      await doctor.save();
+      
+
+      // Send an email with the password to the hospital admin
+      Utils.sendEmail({
+        to: input.email,
+        subject: "Your Doctor account has been created",
+        text: `Your Email is: ${input.email} and Your password is: ${password}`,
+       
+    });
+
+
+      return doctor;
+
+       
+
+    }
+
+
+
   },
   Query: {
     async viewHospital(_, { id }) {
       record = await User.Hospital.findById(id);
       return record;
     },
-    async listHospital(_, {}, context) {
-      console.log(">>>", context);
+    async listHospital(_, { }, context) {
       records = await User.Hospital.find();
+      return records;
+    },
+
+
+    async listHospitalRegistrationRequest(_, { input }) {
+      records = await User.HospitalRegistrationRequest.find(...input);
       return records;
     },
   },
