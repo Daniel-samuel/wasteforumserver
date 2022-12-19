@@ -7,7 +7,6 @@ const Hospital = `
     country: String
     contactPhone: String
     contactName: String
-
     createdAt: DateTime
     updatedAt: DateTime
     createdBy: String
@@ -30,6 +29,7 @@ const Hospital = `
 }
 
    type HospitalAdminCreateDoctor {
+    _id: ID
     email: String
     password: String
     name:String
@@ -39,6 +39,28 @@ const Hospital = `
     contactPhone:String
     category: DoctorCategory
 }
+
+  type HospitalAdminCreateNurse{
+    _id: ID
+    email: String
+    password: String
+    name:String
+    address:String
+    state: String
+    country:String
+    contactPhone:String
+  }
+
+  input HospitalAdminCreateNurseinput{
+    hospital:String
+    email: String
+    password: String
+    name:String
+    address:String
+    state: String
+    country:String
+    contactPhone:String
+  }
 
    input HospitalAdminCreateDoctorinput{
     hospital:String
@@ -61,17 +83,17 @@ input HospitalAdminLoginInput {
   CARDIOLOGIST
    DENTIST 
    DERMATOLOGIST
-    ENT
-     GASTROENTEROLOGIST
-      GENERAL PRACTITIONER
-       GYNAECOLOGIST
-        NEUROLOGIST
-         ORTHOPAEDIC
-          SURGEON
-           PAEDIATRICIAN
-            PHYSIOTHERAPIST
-             PSYCHIATRIST 
-             UROLOGIST
+   ENT
+   GASTROENTEROLOGIST
+   GENERAL PRACTITIONER
+   GYNAECOLOGIST
+   NEUROLOGIST
+   ORTHOPAEDIC
+   SURGEON
+   PAEDIATRICIAN
+   PHYSIOTHERAPIST
+   PSYCHIATRIST 
+   UROLOGIST
 }
 
   input HospitalRegistrationInput {
@@ -113,6 +135,7 @@ input HospitalAdminLoginInput {
     createHospitalRegistrationRequest(input: HospitalRegistrationRequestInput): HospitalRegistrationRequest
     createHospitalAdminLogin(input: HospitalAdminLoginInput): HospitalAdminLogin
     hospitalAdminCreateDoctor(input:HospitalAdminCreateDoctorinput ): HospitalAdminCreateDoctor
+    hospitalAdminCreateNurse(input:HospitalAdminCreateNurseinput): HospitalAdminCreateNurse
   }
 `;
 

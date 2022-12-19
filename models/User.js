@@ -8,7 +8,10 @@ const authSchema = new Schema(
   {
     token: { type: String },
     userId: { type: String },
-    accountType: { type: String, enum: ["AGENT", "HOSPITALADMIN", "DOCTOR", "PATIENT", "TURBOMEDADMIN"] }
+    accountType: {
+      type: String,
+      enum: ["AGENT", "HOSPITALADMIN", "DOCTOR", "PATIENT", "TURBOMEDADMIN"],
+    },
   },
   opts
 );
@@ -24,27 +27,27 @@ const turbomedAdminSchema = new Schema(
 //////////////////////////////////////////////////////////////////////////////////////
 /// Hospitals
 
-const hospitalRegistrationRequest = new Schema(
-  {
-    hospitalSchema: {
-      name: { type: String, default: null },
-      address: { type: String },
-      state: { type: String },
-      country: { type: String },
-      contactPhone: { type: String },
-      contactName: { type: String },
+const hospitalRegistrationRequest = new Schema({
+  hospitalSchema: {
+    name: { type: String, default: null },
+    address: { type: String },
+    state: { type: String },
+    country: { type: String },
+    contactPhone: { type: String },
+    contactName: { type: String },
 
-      hospitalLicence: { type: String }
-    },
-    hospitalAdminSchema: {
-      email: { type: String, unique: true }
-    },
+    hospitalLicence: { type: String },
+  },
+  hospitalAdminSchema: {
+    email: { type: String, unique: true },
+  },
 
-    status: {
-      type: String, enum: ["PENDING", "APPROVED", "REJECTED"], default: "PENDING"
-    }
-  }
-)
+  status: {
+    type: String,
+    enum: ["PENDING", "APPROVED", "REJECTED"],
+    default: "PENDING",
+  },
+});
 
 const hospitalSchema = new Schema(
   {
@@ -55,7 +58,7 @@ const hospitalSchema = new Schema(
     contactPhone: { type: String },
     contactName: { type: String },
 
-    hospitalLicence: { type: String }
+    hospitalLicence: { type: String },
   },
   opts
 );
@@ -69,22 +72,45 @@ const hospitalAdminSchema = new Schema(
   opts
 );
 
-const hospitalAdminCreateDoctorSchema = new Schema(
-  {
-    hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL", required: true },
-    email: { type: String, unique: true },
-    password: { type: String, },
-    category: { type: String, enum: ["CARDIOLOGIST", "DENTIST", "DERMATOLOGIST", "ENT", "GASTROENTEROLOGIST", "GENERAL PRACTITIONER", "GYNAECOLOGIST", "NEUROLOGIST", "ORTHOPAEDIC SURGEON", "PAEDIATRICIAN", "PHYSIOTHERAPIST", "PSYCHIATRIST", "UROLOGIST"] },
-    name: { type: String },
-    address: { type: String },
-    state: { type: String },
-    country: { type: String },
-    contactPhone: { type: String },
-  }
-)
+const hospitalAdminCreateDoctorSchema = new Schema({
+  hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL", required: true },
+  email: { type: String, unique: true },
+  password: { type: String },
+  category: {
+    type: String,
+    enum: [
+      "CARDIOLOGIST",
+      "DENTIST",
+      "DERMATOLOGIST",
+      "ENT",
+      "GASTROENTEROLOGIST",
+      "GENERAL PRACTITIONER",
+      "GYNAECOLOGIST",
+      "NEUROLOGIST",
+      "ORTHOPAEDIC SURGEON",
+      "PAEDIATRICIAN",
+      "PHYSIOTHERAPIST",
+      "PSYCHIATRIST",
+      "UROLOGIST",
+    ],
+  },
+  name: { type: String },
+  address: { type: String },
+  state: { type: String },
+  country: { type: String },
+  contactPhone: { type: String },
+});
 
-
-
+const hospitalAdminCreateNurseSchema = new Schema({
+  hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL", required: true },
+  email: { type: String, unique: true },
+  password: { type: String },
+  name: { type: String },
+  address: { type: String },
+  state: { type: String },
+  country: { type: String },
+  contactPhone: { type: String },
+});
 
 //////////////////////////////////////////////////////////////////////////////////////
 /// Patient
@@ -120,11 +146,14 @@ const Auth = model("AUTH", authSchema);
 
 const TurbomedAdmin = model("TURBOMEDADMIN", turbomedAdminSchema);
 const Agent = model("AGENT", agentSchema);
-const Doctor = model ("Doctor", hospitalAdminCreateDoctorSchema)
-const HospitalRegistrationRequest = model("HospitalRegistrationRequest", hospitalRegistrationRequest);
+const Doctor = model("Doctor", hospitalAdminCreateDoctorSchema);
+const Nurse = model("Nurse", hospitalAdminCreateNurseSchema);
+const HospitalRegistrationRequest = model(
+  "HospitalRegistrationRequest",
+  hospitalRegistrationRequest
+);
 const Hospital = model("HOSPITAL", hospitalSchema);
 const HospitalAdmin = model("HOSPITALADMIN", hospitalAdminSchema);
-
 
 const Patient = model("PATIENT", patientSchema);
 const PatientHospital = model("PATIENTHOSPITAL", patientHospitalSchema);
@@ -139,6 +168,7 @@ const exportVariables = {
   HospitalAdmin,
 
   Doctor,
+  Nurse,
   Patient,
   PatientHospital,
 };

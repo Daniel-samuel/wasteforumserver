@@ -7,7 +7,7 @@ const Hospital = require("./Hospital");
 const Post = require("./Post");
 const Patient = require("./Patient");
 const Turbomed = require("./Turbomed");
-
+const Generalinfo = require("./Generalinfo");
 
 const Root = `
   type Query {
@@ -21,4 +21,13 @@ const Root = `
   }
 `;
 
-module.exports = typeDefs = [Root, Scalars.typeDefs, Auth, Hospital, Post, Patient, Turbomed , ];
+module.exports = typeDefs = [
+  Root,
+  Scalars.typeDefs,
+  Auth,
+  Hospital,
+  Post,
+  Patient,
+  Turbomed,
+  Generalinfo,
+];

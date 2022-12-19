@@ -4,6 +4,7 @@ const patientResolvers = require("./patient");
 const postResolvers = require("./post");
 const turbomedResolvers = require("./turbomed");
 const hospitalAdminResolvers = require("./hospitalAdminLogin");
+const generalinfoResolvers = require("./generalinfo");
 
 module.exports = {
   Query: {
@@ -13,6 +14,7 @@ module.exports = {
     ...postResolvers.Query,
     ...turbomedResolvers.Query,
     ...hospitalAdminResolvers.Query,
+    ...generalinfoResolvers.Query,
   },
   Mutation: {
     ...messageResolvers.Mutation,
@@ -20,6 +22,7 @@ module.exports = {
     ...patientResolvers.Mutation,
     ...postResolvers.Mutation,
     ...turbomedResolvers.Mutation,
-    ...hospitalAdminResolvers.Mutation
+    ...hospitalAdminResolvers.Mutation,
+    ...generalinfoResolvers.Mutation,
   },
 };
