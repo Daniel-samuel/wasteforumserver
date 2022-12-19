@@ -29,12 +29,12 @@ const startServer = async () => {
 
     mongoose.connect(MONGODB, { useNewUrlParser: true }).then(() => {
       // console.log("MongoDB connected");
-      // return server.listen({ port: 8080 });
+      // return server.listen({ port: 3000 });
 
       server.applyMiddleware({ app });
-      app.listen(process.env.PORT || 8080, () =>
+      app.listen(process.env.PORT || 3000, () =>
         console.log(
-          `🚀 Server ready at http://localhost:8080${server.graphqlPath}`
+          `🚀 Server ready at http://localhost:3000${server.graphqlPath}`
         )
       );
     });
