@@ -92,6 +92,7 @@ const hospitalAdminCreateDoctorSchema = new Schema({
       "PHYSIOTHERAPIST",
       "PSYCHIATRIST",
       "UROLOGIST",
+      "SURGEON"
     ],
   },
   name: { type: String },
