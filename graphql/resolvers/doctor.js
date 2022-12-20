@@ -23,6 +23,7 @@ module.exports = {
         user: doctor._id,
         accountType: "DOCTOR",
       });
+      console.log("happy");
       await newAuth.save();
 
       return {
