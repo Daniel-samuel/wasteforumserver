@@ -113,6 +113,11 @@ const hospitalAdminCreateNurseSchema = new Schema({
   contactPhone: { type: String },
 });
 
+const loginDoctor = new Schema({
+  email: { type: String },
+  password: { type: String },
+});
+
 //////////////////////////////////////////////////////////////////////////////////////
 /// Patient
 const patientSchema = new Schema(
@@ -144,7 +149,7 @@ const agentSchema = new Schema(
 );
 
 const Auth = model("AUTH", authSchema);
-
+const LoginDoctor = model("loginDoctor", loginDoctor);
 const TurbomedAdmin = model("TURBOMEDADMIN", turbomedAdminSchema);
 const Agent = model("AGENT", agentSchema);
 const Doctor = model("Doctor", hospitalAdminCreateDoctorSchema);
@@ -163,7 +168,7 @@ const exportVariables = {
   Auth,
   TurbomedAdmin,
   Agent,
-
+  LoginDoctor,
   HospitalRegistrationRequest,
   Hospital,
   HospitalAdmin,

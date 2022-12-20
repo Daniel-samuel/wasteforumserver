@@ -8,6 +8,7 @@ const Post = require("./Post");
 const Patient = require("./Patient");
 const Turbomed = require("./Turbomed");
 const Generalinfo = require("./Generalinfo");
+const Doctor = require("./Doctor");
 
 const Root = `
   type Query {
@@ -30,4 +31,5 @@ module.exports = typeDefs = [
   Patient,
   Turbomed,
   Generalinfo,
+  Doctor,
 ];
