@@ -1,5 +1,7 @@
 const Doctor = `
 type LoginDoctor {
+    _id: ID
+    hospital:ID
     password: String!
     email: String!
     token: String
@@ -8,6 +10,11 @@ type LoginDoctor {
 input LoginDoctorInput{
     password: String!
     email: String!
+}
+
+type Query {
+    viewLoginDoctor(id: ID!): LoginDoctor
+    listLoginDoctor: [LoginDoctor]
 }
 type Mutation {
     loginDoctor(input:LoginDoctorInput):LoginDoctor

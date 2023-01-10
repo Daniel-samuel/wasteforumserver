@@ -24,77 +24,81 @@ const Hospital = `
   }
 
   type HospitalAdminLogin {
+    _id: ID
+    hospital: ID
     email: String
     password: String
-}
+  }
 
-   type HospitalAdminCreateDoctor {
+  type HospitalAdminCreateDoctor {
+    _id: ID
+    hospital: String
+    email: String
+    password: String
+    name: String
+    address: String
+    state: String
+    country: String
+    contactPhone: String
+    category: DoctorCategory
+  }
+
+  type HospitalAdminCreateNurse {
     _id: ID
     email: String
     password: String
-    name:String
-    address:String
+    name: String
+    address: String
     state: String
-    country:String
-    contactPhone:String
-    category: DoctorCategory
-}
-
-  type HospitalAdminCreateNurse{
-    _id: ID
-    email: String
-    password: String
-    name:String
-    address:String
-    state: String
-    country:String
-    contactPhone:String
+    country: String
+    contactPhone: String
   }
 
-  input HospitalAdminCreateNurseinput{
-    hospital:String
+  input HospitalAdminCreateNurseinput {
+    hospital: String
     email: String
     password: String
-    name:String
-    address:String
+    name: String
+    address: String
     state: String
-    country:String
-    contactPhone:String
+    country: String
+    contactPhone: String
   }
 
-   input HospitalAdminCreateDoctorinput{
-    hospital:String
+  input HospitalAdminCreateDoctorinput {
+    hospital: String
     email: String
     password: String
-    name:String
-    address:String
+    name: String
+    address: String
     state: String
-    country:String
-    contactPhone:String
+    country: String
+    contactPhone: String
     category: DoctorCategory
-   }
+  }
 
-input HospitalAdminLoginInput {
+  input HospitalAdminLoginInput {
     email: String
     password: String
-}
+  }
 
- enum DoctorCategory{
-  CARDIOLOGIST
-   DENTIST 
-   DERMATOLOGIST
-   ENT
-   GASTROENTEROLOGIST
-   GENERAL PRACTITIONER
-   GYNAECOLOGIST
-   NEUROLOGIST
-   ORTHOPAEDIC
-   SURGEON
-   PAEDIATRICIAN
-   PHYSIOTHERAPIST
-   PSYCHIATRIST 
-   UROLOGIST
-}
+  enum DoctorCategory {
+    CARDIOLOGIST
+    DENTIST
+    DERMATOLOGIST
+    ENT
+    GASTROENTEROLOGIST
+    GENERAL
+    PRACTITIONER
+    GYNAECOLOGIST
+    NEUROLOGIST
+    ORTHOPAEDIC
+    SURGEON
+    PAEDIATRICIAN
+    PHYSIOTHERAPIST
+    PSYCHIATRIST
+    UROLOGIST
+  }
 
   input HospitalRegistrationInput {
     name: String
@@ -128,14 +132,28 @@ input HospitalAdminLoginInput {
   type Query {
     viewHospital(id: ID!): Hospital
     listHospital: [Hospital]
-    listHospitalRegistrationRequest(input: ListHospitalRegistrationRequestInput): [HospitalRegistrationRequest]
-  }
+    listHospitalRegistrationRequest(
+      input: ListHospitalRegistrationRequestInput
+    ): [HospitalRegistrationRequest]
+    listHospitalAdminCreateDoctor:[HospitalAdminCreateDoctor]
+    viewHospitalAdminCreateDoctor(id: ID):HospitalAdminCreateDoctor
+    listHospitalAdminCreateNurse:[HospitalAdminCreateNurse]
+    viewHospitalAdminCreateNurse(id: ID):HospitalAdminCreateNurse
+    llistHospitalRegistrationRequest:[HospitalRegistrationRequest]
 
+    }
+    
   type Mutation {
-    createHospitalRegistrationRequest(input: HospitalRegistrationRequestInput): HospitalRegistrationRequest
+    createHospitalRegistrationRequest(
+      input: HospitalRegistrationRequestInput
+    ): HospitalRegistrationRequest
     createHospitalAdminLogin(input: HospitalAdminLoginInput): HospitalAdminLogin
-    hospitalAdminCreateDoctor(input:HospitalAdminCreateDoctorinput ): HospitalAdminCreateDoctor
-    hospitalAdminCreateNurse(input:HospitalAdminCreateNurseinput): HospitalAdminCreateNurse
+    hospitalAdminCreateDoctor(
+      input: HospitalAdminCreateDoctorinput
+    ): HospitalAdminCreateDoctor
+    hospitalAdminCreateNurse(
+      input: HospitalAdminCreateNurseinput
+    ): HospitalAdminCreateNurse
   }
 `;
 

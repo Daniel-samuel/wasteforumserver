@@ -5,6 +5,7 @@ type WalkIn {
     Name: String
     Email: String
     Contact: String
+    hospital:String
     Address: String
     DOB: String
     Age: String
@@ -19,8 +20,9 @@ type WalkIn {
 
 
   input WalkInInput {
+  
+    doctorId: ID
     hospital: String
-    nurse: String
     Name: String
     Email: String
     Contact: String

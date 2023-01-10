@@ -4,11 +4,11 @@ const General = require("../../models/Generalinfo");
 module.exports = {
   Mutation: {
     async createWalkIn(_, { input }) {
-      const nurse = await User.Nurse.findById(input.Nurse);
+      const doctor = await User.Doctor.findById(input.doctorId);
       const hospital = await User.Hospital.findById(input.hospital);
       const newWalkIn = new General.WalkIn({
         ...input,
-        sender: nurse,
+        sender: doctor,
         from: hospital,
       });
       try {

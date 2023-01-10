@@ -97,6 +97,19 @@ module.exports = {
       records = await User.Hospital.find();
       return records;
     },
+    async listHospitalAdminCreateDoctor(_, {}, context) {
+      record = await User.Doctor.find();
+      return record;
+    },
+
+    async listHospitalAdminCreateNurse(_, {}, context) {
+      record = await User.Nurse.find();
+      return record;
+    },
+    async llistHospitalRegistrationRequest(_, {}, context) {
+      record = await User.HospitalRegistrationRequest.find();
+      return record;
+    },
 
     async listHospitalRegistrationRequest(_, { input }) {
       records = await User.HospitalRegistrationRequest.find(...input);

@@ -12,11 +12,9 @@ const patientWalkinFormSchema = new Schema(
     },
     Email: {
       type: String,
-      required: true,
     },
     Contact: {
       type: String,
-      required: true,
     },
     Address: {
       type: String,
