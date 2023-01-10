@@ -53,6 +53,7 @@ module.exports = {
       Utils.sendEmail({
         to: input.email,
         subject: "Your Doctor account has been created",
+
         text: `Your Email is: ${input.email} and Your password is: ${password}`,
       });
 
