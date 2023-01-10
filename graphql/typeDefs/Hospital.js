@@ -18,6 +18,7 @@ const Hospital = `
   }
 
   type HospitalRegistrationRequest {
+    _id: ID
     hospitalSchema: Hospital
     hospitalAdminSchema: HospitalAdmin
     status: HospitalRegistrationRequestStatus
