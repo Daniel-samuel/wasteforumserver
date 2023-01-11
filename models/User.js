@@ -92,7 +92,7 @@ const hospitalAdminCreateDoctorSchema = new Schema({
       "PHYSIOTHERAPIST",
       "PSYCHIATRIST",
       "UROLOGIST",
-      "SURGEON"
+      "SURGEON",
     ],
   },
   name: { type: String },
@@ -114,6 +114,12 @@ const hospitalAdminCreateNurseSchema = new Schema({
 });
 
 const loginDoctor = new Schema({
+  hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL", required: true },
+  email: { type: String },
+  password: { type: String },
+});
+
+const loginNurse = new Schema({
   hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL", required: true },
   email: { type: String },
   password: { type: String },
@@ -151,6 +157,7 @@ const agentSchema = new Schema(
 
 const Auth = model("AUTH", authSchema);
 const LoginDoctor = model("loginDoctor", loginDoctor);
+const LoginNurse = model("loginNurse", loginNurse);
 const TurbomedAdmin = model("TURBOMEDADMIN", turbomedAdminSchema);
 const Agent = model("AGENT", agentSchema);
 const Doctor = model("Doctor", hospitalAdminCreateDoctorSchema);
@@ -173,7 +180,7 @@ const exportVariables = {
   HospitalRegistrationRequest,
   Hospital,
   HospitalAdmin,
-
+  LoginNurse,
   Doctor,
   Nurse,
   Patient,
