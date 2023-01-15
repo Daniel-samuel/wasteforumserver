@@ -7,7 +7,6 @@ const hospitalAdminResolvers = require("./hospitalAdminLogin");
 const generalinfoResolvers = require("./generalinfo");
 const doctorResolvers = require("./doctor");
 const nurseResolvers = require("./nurse");
-const nurse = require("./nurse");
 
 module.exports = {
   Query: {
