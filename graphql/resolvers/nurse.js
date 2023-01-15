@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const JWT = require("../../helpers/jwt");
 module.exports = {
   Mutation: {
-    async LoginNurse(_, { input }) {
+    async loginNurse(_, { input }) {
       const nurse = await User.Nurse.findOne({
         email: input.email,
       });
@@ -21,7 +21,7 @@ module.exports = {
       const newAuth = new User.Auth({
         token: token,
         user: nurse._id,
-        accountType: "DOCTOR",
+        accountType: "NURSE",
       });
       console.log("happy");
       await newAuth.save();

@@ -10,7 +10,14 @@ const authSchema = new Schema(
     userId: { type: String },
     accountType: {
       type: String,
-      enum: ["AGENT", "HOSPITALADMIN", "DOCTOR", "PATIENT", "TURBOMEDADMIN"],
+      enum: [
+        "AGENT",
+        "HOSPITALADMIN",
+        "DOCTOR",
+        "PATIENT",
+        "TURBOMEDADMIN",
+        "NURSE",
+      ],
     },
   },
   opts
