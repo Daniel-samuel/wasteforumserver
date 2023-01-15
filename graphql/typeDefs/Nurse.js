@@ -20,6 +20,7 @@ type Mutation {
     loginNurse(input:LoginNurseInput):LoginNurse
 }
 
+
 `;
 
 module.exports = Nurse;
