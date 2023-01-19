@@ -107,6 +107,10 @@ const hospitalAdminCreateDoctorSchema = new Schema({
   state: { type: String },
   country: { type: String },
   contactPhone: { type: String },
+  age: { type: String },
+  sex: { type: String, enum: ["MALE", "FEMALE"] },
+  DOB: { type: String },
+  biography: { type: String },
 });
 
 const hospitalAdminCreateNurseSchema = new Schema({
@@ -116,8 +120,11 @@ const hospitalAdminCreateNurseSchema = new Schema({
   name: { type: String },
   address: { type: String },
   state: { type: String },
+  age: { type: String },
+  sex: { type: String, enum: ["MALE", "FEMALE"] },
   country: { type: String },
   contactPhone: { type: String },
+  biography: { type: String },
 });
 
 const loginDoctor = new Schema({

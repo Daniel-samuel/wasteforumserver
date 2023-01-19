@@ -33,6 +33,7 @@ const patientWalkinFormSchema = new Schema(
     },
     AlergyHistory: {
       type: String,
+      enum: ["DOG", "CARROT", "PILLS", "OTHERS"],
     },
     Complaint: {
       type: String,

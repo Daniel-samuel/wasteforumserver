@@ -42,6 +42,10 @@ const Hospital = `
     country: String
     contactPhone: String
     category: DoctorCategory
+    age: String
+    sex:SexCategory
+    DOB: String
+    biography: String
   }
 
   type HospitalAdminCreateNurse {
@@ -53,6 +57,10 @@ const Hospital = `
     state: String
     country: String
     contactPhone: String
+    age:String
+    sex:SexCategory
+    biography:String
+
   }
 
   input HospitalAdminCreateNurseinput {
@@ -64,6 +72,9 @@ const Hospital = `
     state: String
     country: String
     contactPhone: String
+    age:String
+    sex:SexCategory
+    biography:String
   }
 
   input HospitalAdminCreateDoctorinput {
@@ -76,6 +87,10 @@ const Hospital = `
     country: String
     contactPhone: String
     category: DoctorCategory
+    age: String
+    sex:SexCategory
+    DOB: String
+    biography: String
   }
 
   input HospitalAdminLoginInput {
@@ -99,6 +114,11 @@ const Hospital = `
     PHYSIOTHERAPIST
     PSYCHIATRIST
     UROLOGIST
+  }
+
+  enum SexCategory{
+    MALE
+    FEMALE
   }
 
   input HospitalRegistrationInput {

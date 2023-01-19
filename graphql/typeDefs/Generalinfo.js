@@ -10,12 +10,16 @@ type WalkIn {
     DOB: String
     Age: String
     Sex: String
-    AlergyHistory: String
+    AlergyHistory: Alergy
     Complaint: String
     createdAt: DateTime
     updatedAt: DateTime
     createdBy: String
    
+  }
+
+  enum Alergy {
+    DOG CARROT PILLS OTHERS
   }
 
 
@@ -30,7 +34,7 @@ type WalkIn {
     DOB: String
     Age: String
     Sex: String
-    AlergyHistory: String
+    AlergyHistory: Alergy
     Complaint: String
    
   }
