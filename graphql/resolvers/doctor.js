@@ -33,4 +33,10 @@ module.exports = {
       };
     },
   },
+  Query: {
+    async viewLoginDoctor(_, { id }) {
+      record = await User.Doctor.findById(id);
+      return record;
+    },
+  },
 };
