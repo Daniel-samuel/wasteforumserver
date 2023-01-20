@@ -6,8 +6,8 @@ const Hospital = `
     state: String
     country: String
     hospitalLicence:String
-    doctorCount:String
-    nurseCount:String
+    doctorCount:Float
+    nurseCount:Float
     contactPhone: String
     contactName: String
     createdAt: DateTime
@@ -131,8 +131,8 @@ const Hospital = `
     country: String
     contactPhone: String
     contactName: String
-    doctorCount:String
-    nurseCount:String
+    doctorCount:Float
+    nurseCount:Float
     hospitalLicence: String!
   }
 

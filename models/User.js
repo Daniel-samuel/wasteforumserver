@@ -66,9 +66,8 @@ const hospitalSchema = new Schema(
     contactPhone: { type: String },
     contactName: { type: String },
     hospitalLicence: { type: String },
-    doctorCount: { type: String },
-
-    nurseCount: { type: String },
+    doctorCount: { type: Number },
+    nurseCount: { type: Number },
   },
   opts
 );

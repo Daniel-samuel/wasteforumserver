@@ -89,13 +89,7 @@ module.exports = {
         if (record.status === "APPROVED") {
           // Create the hospital record
           const hospital = new User.Hospital({
-            name: record.hospitalSchema.name,
-            address: record.hospitalSchema.address,
-            state: record.hospitalSchema.state,
-            country: record.hospitalSchema.country,
-            contactPhone: record.hospitalSchema.contactPhone,
-            contactName: record.hospitalSchema.contactName,
-            hospitalLicence: record.hospitalSchema.hospitalLicence,
+            ...record.hospitalSchema,
           });
           await hospital.save();
 
