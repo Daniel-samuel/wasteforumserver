@@ -42,8 +42,9 @@ const hospitalRegistrationRequest = new Schema({
     country: { type: String },
     contactPhone: { type: String },
     contactName: { type: String },
-
     hospitalLicence: { type: String },
+    doctorCount: { type: String },
+    nurseCount: { type: String },
   },
   hospitalAdminSchema: {
     email: { type: String, unique: true },
@@ -64,8 +65,9 @@ const hospitalSchema = new Schema(
     country: { type: String },
     contactPhone: { type: String },
     contactName: { type: String },
-
     hospitalLicence: { type: String },
+    doctorCount: { type: String },
+    nurseCount: { type: String },
   },
   opts
 );

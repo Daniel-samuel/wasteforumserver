@@ -5,6 +5,9 @@ const Hospital = `
     address: String
     state: String
     country: String
+    hospitalLicence:String
+    doctorCount:String
+    nurseCount:String
     contactPhone: String
     contactName: String
     createdAt: DateTime
@@ -128,10 +131,12 @@ const Hospital = `
     country: String
     contactPhone: String
     contactName: String
-
+    doctorCount:String
+    nurseCount:String
     hospitalLicence: String!
   }
 
+  
   input HospitalAdminRegistrationInput {
     email: String!
   }
