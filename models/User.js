@@ -67,6 +67,7 @@ const hospitalSchema = new Schema(
     contactName: { type: String },
     hospitalLicence: { type: String },
     doctorCount: { type: String },
+
     nurseCount: { type: String },
   },
   opts
