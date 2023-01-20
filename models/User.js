@@ -43,8 +43,8 @@ const hospitalRegistrationRequest = new Schema({
     contactPhone: { type: String },
     contactName: { type: String },
     hospitalLicence: { type: String },
-    doctorCount: { type: String },
-    nurseCount: { type: String },
+    doctorCount: { type: Number },
+    nurseCount: { type: Number },
   },
   hospitalAdminSchema: {
     email: { type: String, unique: true },
