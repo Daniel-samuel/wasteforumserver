@@ -2,6 +2,7 @@ const Doctor = `
 type LoginDoctor {
     _id: ID
     hospital:ID
+    doctor:ID
     password: String!
     email: String!
     token: String

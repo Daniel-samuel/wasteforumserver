@@ -3,6 +3,7 @@
 //     process.env.MAILJET_SECRET,
 // );
 const mailjet = require("node-mailjet");
+
 const Mailjet = mailjet.connect(
   process.env.MAILJET_KEY,
   process.env.MAILJET_SECRET

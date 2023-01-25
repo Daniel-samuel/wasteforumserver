@@ -131,6 +131,7 @@ const hospitalAdminCreateNurseSchema = new Schema({
 
 const loginDoctor = new Schema({
   hospital: { type: Schema.Types.ObjectId, ref: "HOSPITAL", required: true },
+  doctor: { type: Schema.Types.ObjectId, ref: "Doctor", required: true },
   email: { type: String },
   password: { type: String },
 });
