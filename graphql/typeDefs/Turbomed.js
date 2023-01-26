@@ -1,10 +1,14 @@
 const Turbomed = `
     type TurbomedAdmin {
+        _id:ID
+        name:String
         email: String
         password: String
+        token:String
     }
 
     input TurbomedAdminInput {
+        name:String
         email: String
         password: String    
 
@@ -16,6 +20,10 @@ const Turbomed = `
         status: HospitalRegistrationRequestStatus
     }
  
+
+    type Query{
+        viewTurbomedAdmin(id: ID!): TurbomedAdmin
+    }
     
     type Mutation {
         reviewHospitalRegistrationRequest(input: ReviewHospitalRegistrationRequestInput): HospitalRegistrationRequest

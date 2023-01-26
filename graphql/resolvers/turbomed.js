@@ -61,6 +61,7 @@ module.exports = {
       });
       await newAuth.save();
 
+      console.log(turboadmin, "TURBO");
       return {
         id: turboadmin._id,
         ...turboadmin._doc,
@@ -120,6 +121,13 @@ module.exports = {
       }
 
       throw new Error("Hospital registration request not found");
+    },
+  },
+
+  Query: {
+    async viewTurbomedAdmin(_, { id }) {
+      record = await User.TurbomedAdmin.findById(id);
+      return record;
     },
   },
 };
