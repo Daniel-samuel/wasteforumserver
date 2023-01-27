@@ -102,11 +102,20 @@ module.exports = {
       record = await User.Doctor.find();
       return record;
     },
+    async viewHospitalAdminCreateDoctor(_, { id }) {
+      record = await User.Doctor.findById(id);
+      return record;
+    },
 
     async listHospitalAdminCreateNurse(_, {}, context) {
       record = await User.Nurse.find();
       return record;
     },
+    async viewHospitalAdminCreateNurse(_, { id }) {
+      record = await User.Nurse.findById(id);
+      return record;
+    },
+
     async llistHospitalRegistrationRequest(_, {}, context) {
       record = await User.HospitalRegistrationRequest.find();
       return record;
