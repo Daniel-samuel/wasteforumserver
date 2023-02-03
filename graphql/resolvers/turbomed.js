@@ -129,5 +129,10 @@ module.exports = {
       record = await User.TurbomedAdmin.findById(id);
       return record;
     },
+
+    async viewreviewHospitalRegistrationRequest(_, { id }) {
+      record = await User.HospitalRegistrationRequest.findById(id);
+      return record;
+    },
   },
 };

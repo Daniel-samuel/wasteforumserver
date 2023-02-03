@@ -8,9 +8,9 @@ const resolvers = require("./graphql/resolvers");
 const express = require("express");
 
 const MONGODB =
-  "mongodb+srv://Daniel:happy@apollologin.xldzbmx.mongodb.net/turbomed?retryWrites=true&w=majority";
-// "mongodb+srv://Daniel:happy@amazon-clone.emkkn.mongodb.net/turbomed?retryWrites=true&w=majority";
-
+  // "mongodb+srv://Daniel:happy@apollologin.xldzbmx.mongodb.net/turbomed?retryWrites=true&w=majority";
+  // "mongodb+srv://turbo:happy@apollologin.xldzbmx.mongodb.net/turbomed?retryWrites=true&w=majority";
+  "mongodb+srv://Turbo:happy@turbomed.zr5bivi.mongodb.net/?retryWrites=true&w=majority";
 // const MONGODB = "mongodb://localhost:27017/testing";
 
 const app = express();

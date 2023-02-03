@@ -23,6 +23,7 @@ const Turbomed = `
 
     type Query{
         viewTurbomedAdmin(id: ID!): TurbomedAdmin
+        viewreviewHospitalRegistrationRequest(id:ID):HospitalRegistrationRequest
     }
     
     type Mutation {

@@ -60,6 +60,20 @@ module.exports = {
       return doctor;
     },
 
+    async updateDoctor(_, { id, input }) {
+      // Check that the doctor exists
+      const doctor = await User.Doctor.findById(id);
+      if (!doctor) {
+        throw new Error("Doctor not found.");
+      }
+
+      // Update the doctor's information
+      Object.assign(doctor, input);
+      await doctor.save();
+
+      return doctor;
+    },
+
     async hospitalAdminCreateNurse(_, { input }) {
       // Check that the hospital exists
       const hospital = await User.Hospital.findById(input.hospital);
@@ -118,6 +132,11 @@ module.exports = {
 
     async llistHospitalRegistrationRequest(_, {}, context) {
       record = await User.HospitalRegistrationRequest.find();
+      return record;
+    },
+
+    async viewHospitalRegistrationRequest(_, { id }) {
+      record = await User.HospitalRegistrationRequest.findById(id);
       return record;
     },
 

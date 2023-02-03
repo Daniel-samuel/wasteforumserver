@@ -19,7 +19,7 @@ type WalkIn {
   }
 
   enum Alergy {
-    DOG CARROT PILLS OTHERS
+    DOG CARROT PILLS COCO WEED BALABLU OTHERS
   }
 
 

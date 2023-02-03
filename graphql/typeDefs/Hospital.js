@@ -31,6 +31,7 @@ const Hospital = `
     _id: ID
     hospital: ID
     email: String
+
     password: String
   }
 
@@ -51,8 +52,25 @@ const Hospital = `
     biography: String
   }
 
+  input UpdateDoctorInput {
+    email: String
+    password: String
+    name: String
+    address: String
+    state: String
+    country: String
+    contactPhone: String
+    category: DoctorCategory
+    age: String
+    sex:SexCategory
+    DOB: String
+    biography: String
+    
+  }
+
   type HospitalAdminCreateNurse {
     _id: ID
+    hospital: String
     email: String
     password: String
     name: String
@@ -166,6 +184,7 @@ const Hospital = `
     listHospitalAdminCreateNurse:[HospitalAdminCreateNurse]
     viewHospitalAdminCreateNurse(id: ID):HospitalAdminCreateNurse
     llistHospitalRegistrationRequest:[HospitalRegistrationRequest]
+    viewHospitalRegistrationRequest(id:ID): HospitalRegistrationRequest
 
     }
     
@@ -180,6 +199,7 @@ const Hospital = `
     hospitalAdminCreateNurse(
       input: HospitalAdminCreateNurseinput
     ): HospitalAdminCreateNurse
+    updateDoctor(id: ID!, input: UpdateDoctorInput!): HospitalAdminCreateDoctor!
   }
 `;
 
