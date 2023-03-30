@@ -53,8 +53,6 @@ const Hospital = `
   }
 
   input UpdateDoctorInput {
-    email: String
-    password: String
     name: String
     address: String
     state: String

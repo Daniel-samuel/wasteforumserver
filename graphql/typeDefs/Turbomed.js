@@ -19,6 +19,11 @@ const Turbomed = `
         hospitalRegistrationRequestId: ID! 
         status: HospitalRegistrationRequestStatus
     }
+
+   input ReviewPharmacyInput {
+    pharmacyId: ID!
+    status:createStatus
+   }
  
 
     type Query{
@@ -28,6 +33,7 @@ const Turbomed = `
     
     type Mutation {
         reviewHospitalRegistrationRequest(input: ReviewHospitalRegistrationRequestInput): HospitalRegistrationRequest
+        reviewPharmacy(input:ReviewPharmacyInput):createPharmacy
         createTurbo(input: TurbomedAdminInput):TurbomedAdmin
         loginTurbo(input:LoginInput):TurbomedAdmin
     }

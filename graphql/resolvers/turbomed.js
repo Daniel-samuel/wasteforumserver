@@ -1,4 +1,5 @@
 const User = require("../../models/User");
+const Pharmacy = require("../../models/Pharmacys");
 const Utils = require("../../helpers/utils");
 const bcrypt = require("bcryptjs");
 const JWT = require("../../helpers/jwt");
@@ -121,6 +122,45 @@ module.exports = {
       }
 
       throw new Error("Hospital registration request not found");
+    },
+
+    async reviewPharmacy(_, { input }) {
+      const request = await Pharmacy.CreatePharmacy.findById(input.pharmacyId);
+
+      if (request) {
+        if (request.status === "APPROVED") {
+          throw new Error(
+            "Hospital registration request has already been approved"
+          );
+        }
+        request.status = input.status;
+        await request.save();
+        if (request.status === "APPROVED") {
+          const pharmacy = new Pharmacy.Pharmacy({
+            ...request.pharmacySchema,
+          });
+          await pharmacy.save();
+          const password = Utils.generatePassword();
+          const saltRounds = 10;
+          const hash = await bcrypt.hash(password, saltRounds);
+          const pharmacyAdmin = new Pharmacy.AdminPharmacy({
+            email: request.adminPharmacy.email,
+            name: request.adminPharmacy.name,
+            password: hash,
+            pharmacy: pharmacy._id,
+          });
+          await pharmacyAdmin.save();
+
+          Utils.sendEmail({
+            to: pharmacyAdmin.email,
+            subject: "Your Pharmacy  account has been created",
+            text: "The password provided is you Admin login password",
+            text: `Your password is: ${password}`,
+          });
+        }
+        console.log(request);
+        return request;
+      }
     },
   },
 

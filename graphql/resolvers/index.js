@@ -7,6 +7,7 @@ const hospitalAdminResolvers = require("./hospitalAdminLogin");
 const generalinfoResolvers = require("./generalinfo");
 const doctorResolvers = require("./doctor");
 const nurseResolvers = require("./nurse");
+const pharmacyResolvers = require("./pharmacy");
 
 module.exports = {
   Query: {
@@ -19,6 +20,7 @@ module.exports = {
     ...generalinfoResolvers.Query,
     ...doctorResolvers.Query,
     ...nurseResolvers.Query,
+    ...pharmacyResolvers.Query,
   },
   Mutation: {
     ...messageResolvers.Mutation,
@@ -30,5 +32,6 @@ module.exports = {
     ...generalinfoResolvers.Mutation,
     ...doctorResolvers.Mutation,
     ...nurseResolvers.Mutation,
+    ...pharmacyResolvers.Mutation,
   },
 };

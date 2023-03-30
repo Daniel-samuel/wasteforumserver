@@ -10,6 +10,7 @@ const Turbomed = require("./Turbomed");
 const Generalinfo = require("./Generalinfo");
 const Doctor = require("./Doctor");
 const Nurse = require("./Nurse");
+const Pharmacy = require("./Pharmacy");
 const Root = `
   type Query {
     _empty: String
@@ -33,4 +34,5 @@ module.exports = typeDefs = [
   Generalinfo,
   Doctor,
   Nurse,
+  Pharmacy,
 ];
