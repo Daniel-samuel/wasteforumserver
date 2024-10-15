@@ -7,12 +7,7 @@ const resolvers = require("./graphql/resolvers");
 
 const express = require("express");
 
-const MONGODB =
-  // "mongodb+srv://turbo:avarter@turbomed.zr5bivi.mongodb.net/?retryWrites=true&w=majority";
-  "mongodb+srv://turbham:happy@cluster0.k3w7x.mongodb.net/test";
-// "mongodb+srv://Turbo:happy@turbomed.zr5bivi.mongodb.net/?retryWrites=true&w=majority";
-
-// const MONGODB = "mongodb://localhost:27017/testing";
+const MONGODB = "mongodb+srv://CAC:Daniel@apollologin.xldzbmx.mongodb.net/CAC";
 
 const app = express();
 

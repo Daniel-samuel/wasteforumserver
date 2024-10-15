@@ -2,15 +2,8 @@
 const _ = require("lodash");
 
 const Scalars = require("./Scalars");
-const Auth = require("./Auth");
-const Hospital = require("./Hospital");
-const Post = require("./Post");
-const Patient = require("./Patient");
-const Turbomed = require("./Turbomed");
-const Generalinfo = require("./Generalinfo");
-const Doctor = require("./Doctor");
-const Nurse = require("./Nurse");
-const Pharmacy = require("./Pharmacy");
+
+const Register = require("./Register");
 const Root = `
   type Query {
     _empty: String
@@ -23,16 +16,4 @@ const Root = `
   }
 `;
 
-module.exports = typeDefs = [
-  Root,
-  Scalars.typeDefs,
-  Auth,
-  Hospital,
-  Post,
-  Patient,
-  Turbomed,
-  Generalinfo,
-  Doctor,
-  Nurse,
-  Pharmacy,
-];
+module.exports = typeDefs = [Root, Scalars.typeDefs, Register];
