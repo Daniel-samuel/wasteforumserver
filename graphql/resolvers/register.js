@@ -5,6 +5,12 @@ module.exports = {
   Mutation: {
     async CreateRegister(_, { input }) {
       try {
+        const existingUser = await User.Register.findOne({
+          email: input.email,
+        });
+        if (existingUser) {
+          throw new Error("Email already exists");
+        }
         const newRegister = new User.Register({ ...input });
         const savedRegister = await newRegister.save();
         return savedRegister;
