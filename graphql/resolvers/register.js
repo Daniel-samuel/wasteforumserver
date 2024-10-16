@@ -16,7 +16,7 @@ module.exports = {
         return savedRegister;
       } catch (error) {
         console.error("Error creating register:", error);
-        throw new Error("Failed to create register");
+        throw error;
       }
     },
 
