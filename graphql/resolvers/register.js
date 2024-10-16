@@ -3,7 +3,7 @@ const JWT = require("../../helpers/jwt");
 
 module.exports = {
   Mutation: {
-    async createRegister(_, { input }) {
+    async CreateRegister(_, { input }) {
       try {
         const newRegister = new User.Register({ ...input });
         const savedRegister = await newRegister.save();
@@ -14,10 +14,10 @@ module.exports = {
       }
     },
 
-    async login(_, { input }) {
-      const { number, name } = input;
+    async Login(_, { input }) {
+      const { number, email } = input;
 
-      const user = await User.Register.findOne({ number, name });
+      const user = await User.Register.findOne({ number, email });
       if (!user) {
         throw new Error("Invalid credentials");
       }
@@ -39,7 +39,7 @@ module.exports = {
       };
     },
 
-    async createCommitment(_, { input }) {
+    async CreateCommitment(_, { input }) {
       // Verify that the register exists
       const register = await User.Register.findById(input.register);
       console.log(register);
@@ -62,7 +62,7 @@ module.exports = {
   },
 
   Query: {
-    async getRegisterByRole(_, { role }) {
+    async GetRegisterByRole(_, { role }) {
       try {
         const registers = await User.Register.find({ role });
         return registers;

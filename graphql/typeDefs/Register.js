@@ -18,7 +18,7 @@ const Register = gql`
   }
 
   input LoginInput {
-    name: String!
+    email: String!
     number: String!
   }
 
@@ -40,16 +40,16 @@ const Register = gql`
   }
 
   type Query {
-    getRegisterByRole(role: String!): [Register]
+    GetRegisterByRole(role: String!): [Register]
     listRegisters: [Register]
     getCommitmentById(id: ID!): Commitment
     getCommitmentsByRegister(register: ID!): [Commitment!]!
   }
 
   type Mutation {
-    createRegister(input: RegisterInput!): Register
-    createCommitment(input: CommitInput!): Commitment
-    login(input: LoginInput!): AuthPayload
+    CreateRegister(input: RegisterInput!): Register
+    CreateCommitment(input: CommitInput!): Commitment
+    Login(input: LoginInput!): AuthPayload
   }
 `;
 module.exports = Register;
