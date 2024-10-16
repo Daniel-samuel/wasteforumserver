@@ -4,12 +4,15 @@ const mongoose = require("mongoose");
 
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
+const cors = require("cors");
 
 const express = require("express");
 
 const MONGODB = "mongodb+srv://CAC:Daniel@apollologin.xldzbmx.mongodb.net/CAC";
 
 const app = express();
+
+app.use(cors());
 
 const startServer = async () => {
   try {
