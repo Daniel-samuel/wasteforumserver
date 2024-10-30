@@ -78,7 +78,7 @@ module.exports = {
       }
     },
 
-    async listRegisters() {
+    async ListRegisters() {
       try {
         const registers = await User.Register.find();
         return registers;

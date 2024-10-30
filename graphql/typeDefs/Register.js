@@ -41,7 +41,7 @@ const Register = gql`
 
   type Query {
     GetRegisterByRole(role: String!): [Register]
-    listRegisters: [Register]
+    ListRegisters: [Register]
     getCommitmentById(id: ID!): Commitment
     getCommitmentsByRegister(register: ID!): [Commitment!]!
   }
